@@ -1,0 +1,8 @@
+leaf_id,Profile_ID,rule
+4,4,ultimoPDTAcquistato_altro <= 0.500 AND PDTCategTotalSpending_Digitale <= 0.500 AND Professione_Pensionato <= 0.500 AND Eta <= 32.500
+7,7,ultimoPDTAcquistato_altro <= 0.500 AND PDTCategTotalSpending_Digitale > 0.500
+5,Generic,ultimoPDTAcquistato_altro <= 0.500 AND PDTCategTotalSpending_Digitale <= 0.500 AND Professione_Pensionato <= 0.500 AND Eta > 32.500
+12,Generic,ultimoPDTAcquistato_altro > 0.500 AND GrandCentr > 0.500 AND Tenure > 3.500
+6,Generic,ultimoPDTAcquistato_altro <= 0.500 AND PDTCategTotalSpending_Digitale <= 0.500 AND Professione_Pensionato > 0.500
+9,Generic,ultimoPDTAcquistato_altro > 0.500 AND GrandCentr <= 0.500
+11,Generic,ultimoPDTAcquistato_altro > 0.500 AND GrandCentr > 0.500 AND Tenure <= 3.500
