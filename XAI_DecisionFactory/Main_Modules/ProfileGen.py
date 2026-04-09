@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[4]:
 
 
 import os
@@ -494,7 +494,6 @@ def ds_profile_generator(
     # =========================================================
     df["profile_volume"] = df.groupby("Profile_ID")[id_col].transform("count")
     df["profile_pct"]    = df["profile_volume"] / len(df)
-
     _exclude_agg = {
         "Profile_ID", id_col,
         "cluster", "leaf_id", "final_cluster",
@@ -505,12 +504,24 @@ def ds_profile_generator(
         c for c in df.select_dtypes(include="number").columns
         if c not in _exclude_agg
     ]
-
-    df_stats = (
+    agg_cat_cols = [
+        c for c in df.select_dtypes(include=["object", "category"]).columns
+        if c not in _exclude_agg
+    ]
+    df_stats_num = (
         df.groupby("Profile_ID")[agg_num_cols]
         .mean()
         .reset_index()
     )
+    if agg_cat_cols:
+        df_stats_cat = (
+            df.groupby("Profile_ID")[agg_cat_cols]
+            .agg(lambda x: x.mode().iloc[0] if not x.mode().empty else None)
+            .reset_index()
+        )
+        df_stats = df_stats_num.merge(df_stats_cat, on="Profile_ID", how="left")
+    else:
+        df_stats = df_stats_num
     df_stats.to_csv(f"{output_path}/PROFILE_STATS.csv", index=False)
 
     # =========================================================
@@ -651,6 +662,12 @@ def ds_profile_generator(
     profile_color = {p: cmap_scatter(i) for i, p in enumerate(unique_profiles)}
 
     fig, ax = plt.subplots(figsize=(9, 6))
+    cmap = plt.get_cmap('tab10' if len(unique_profiles) <= 10 else 'tab20')
+
+    profile_color = {
+    pid: cmap(i % cmap.N)
+    for i, pid in enumerate(unique_profiles)
+    }   
     for pid in unique_profiles:
         mask = profiles_plot == pid
         ax.scatter(
@@ -666,7 +683,8 @@ def ds_profile_generator(
               loc="upper left", fontsize=7, markerscale=1.5)
     plt.tight_layout()
     p_pca2d = f"{output_path}/_pca2d_profiles.png"
-    fig.savefig(p_pca2d, dpi=150)
+    fig.savefig("Profile2D.png", dpi=300, bbox_inches='tight')
+    fig.savefig(p_pca2d, dpi=300)
     plt.close(fig)
     plot_paths.append(("2D PCA Projection by Profile_ID", p_pca2d))
 
@@ -760,7 +778,7 @@ def ds_profile_generator(
     # =========================================================
     # 16. PDF REPORT
     # =========================================================
-    pdf_path = f"{output_path}/InsightForge_Report.pdf"
+    pdf_path = f"{output_path}/DecisionFactory_Report.pdf"
     doc      = SimpleDocTemplate(
         pdf_path, pagesize=A4,
         leftMargin=2*rl_cm, rightMargin=2*rl_cm,
@@ -772,7 +790,7 @@ def ds_profile_generator(
 
     # Cover page
     story.append(Spacer(1, 2*rl_cm))
-    story.append(Paragraph("InsightForge - Analytical Report", h1))
+    story.append(Paragraph("DecisionFactory - Analytical Report", h1))
     story.append(Spacer(1, 0.5*rl_cm))
     story.append(Paragraph(
         f"File: <b>{os.path.basename(file_path)}</b> &nbsp;|&nbsp; "
@@ -840,4 +858,10 @@ def ds_profile_generator(
         "id_with_profile":  df[[id_col, "Profile_ID", "HP", "LP"]],
         "pdf_report":       pdf_path,
     }
+
+
+# In[ ]:
+
+
+
 
