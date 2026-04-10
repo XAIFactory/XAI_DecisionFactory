@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[4]:
+# In[3]:
 
 
 import os
@@ -227,12 +227,20 @@ def ds_profile_generator(
 
     search_gb = RandomizedSearchCV(
         lgb.LGBMClassifier(verbose=-1),
-        {"n_estimators": [50, 100]},
+        {
+            "n_estimators":      [50, 100],
+            "subsample":         [0.6, 0.8],      # % righe per albero
+            "colsample_bytree":  [0.6, 0.8],      # % feature per albero
+        },
         cv=5, scoring="roc_auc", n_jobs=-1, random_state=1926
     )
     search_rf = RandomizedSearchCV(
         RandomForestClassifier(),
-        {"n_estimators": [50, 100]},
+        {
+            "n_estimators":  [50, 100],
+            "max_samples":   [0.6, 0.8],          # % righe per albero (bootstrap)
+            "max_features":  [0.6, 0.8],  # % / strategia feature per split
+        },
         cv=5, scoring="roc_auc", n_jobs=-1, random_state=1926
     )
     search_gb.fit(X_scaled, Y_hp)
@@ -263,6 +271,19 @@ def ds_profile_generator(
         shap_array = shap_values
     if shap_array.ndim == 3:
         shap_array = shap_array[:, :, 1]
+    # --- SHAP summary plot (beeswarm +/-) ---
+    shap_plot_path = f"{output_path}/_shap_summary_beeswarm.png"
+    plt.figure()
+    shap.summary_plot(
+        shap_array,
+        X_scaled,
+        feature_names=feature_names_model,
+        show=False
+    )
+    plt.tight_layout()
+    plt.savefig(shap_plot_path, dpi=300, bbox_inches="tight")
+    plt.savefig(f"{output_path}/shap_summary_beeswarm.png", dpi=300, bbox_inches="tight")  # ← copia permanente
+    plt.close()
 
     mean_impact = np.abs(shap_array).mean(axis=0).reshape(-1)
 
@@ -370,7 +391,7 @@ def ds_profile_generator(
     # absolute row counts corresponding to the min_profile_size fraction
     msl_base = max(10, int(min_profile_size * len(df)))
     dt_param_grid = {
-        "max_depth":        [None, 6, 10, 15],
+        "max_depth":        [6, 10, 15],
         "criterion":        ["gini", "entropy"],
         "min_samples_leaf": [msl_base, msl_base * 2, msl_base * 3],
     }
@@ -628,9 +649,10 @@ def ds_profile_generator(
     ax.set_title("Global SHAP Feature Importance (top 20)")
     plt.tight_layout()
     p_shap = f"{output_path}/_shap_bar.png"
-    fig.savefig(p_shap, dpi=150)
+    fig.savefig(p_shap, dpi=200)
     plt.close(fig)
     plot_paths.append(("Global SHAP Feature Importance", p_shap))
+    plot_paths.append(("SHAP Summary Plot (Beeswarm)", shap_plot_path))
 
     # --- 15b. 2D PCA scatter coloured by Profile_ID ---
     # Stratified sample capped at 10,000 rows to keep rendering fast
@@ -683,7 +705,7 @@ def ds_profile_generator(
               loc="upper left", fontsize=7, markerscale=1.5)
     plt.tight_layout()
     p_pca2d = f"{output_path}/_pca2d_profiles.png"
-    fig.savefig("Profile2D.png", dpi=300, bbox_inches='tight')
+    fig.savefig(f"{output_path}/Profile2D.png", dpi=300, bbox_inches='tight')
     fig.savefig(p_pca2d, dpi=300)
     plt.close(fig)
     plot_paths.append(("2D PCA Projection by Profile_ID", p_pca2d))
@@ -832,7 +854,8 @@ def ds_profile_generator(
         story.append(Paragraph(title_txt, h2))
         story.append(Spacer(1, 0.2*rl_cm))
         # OR charts are rendered taller to fit many features
-        aspect = 0.80 if title_txt.startswith("Odds Ratios") else 0.50
+        aspect = 0.80 if title_txt.startswith("Odds Ratios") else (
+                 0.60 if title_txt.startswith("SHAP Summary") else 0.50  )
         story.append(RLImage(img_path, width=page_w, height=page_w * aspect))
         story.append(Spacer(1, 0.6*rl_cm))
 
