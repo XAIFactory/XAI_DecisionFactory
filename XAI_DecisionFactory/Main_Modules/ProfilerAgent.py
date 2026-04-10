@@ -458,7 +458,10 @@ Provide 2 concrete, specific actions. Each must:
 ### Watch Out For
 List 1 risks or pitfalls specific to this profile based on the data.
 
+
 ---
+
+CONTSRAINT: Each Profile has different name, tag line, Actionable Recommendations and so on, show the main differences between them. 
 For "Generic" Profile_ID they are Not High Propensity client so don't spend so much time be generic on these cluster
 
 Be specific. Be data-driven. Avoid generic statements like "this segment is important".

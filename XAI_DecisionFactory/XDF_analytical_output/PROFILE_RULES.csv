@@ -1,11 +1,10 @@
 leaf_id,Profile_ID,rule
-10,10,ultimoPDTAcquistato_altro <= 0.500 AND PDTCategTotalSpending_Digitale <= 0.500 AND PDTCategTotalSpending_Protezione > 0.500 AND Eta <= 58.500 AND GrandCentr <= 0.500
-11,11,ultimoPDTAcquistato_altro <= 0.500 AND PDTCategTotalSpending_Digitale <= 0.500 AND PDTCategTotalSpending_Protezione > 0.500 AND Eta <= 58.500 AND GrandCentr > 0.500
-15,15,ultimoPDTAcquistato_altro <= 0.500 AND PDTCategTotalSpending_Digitale > 0.500
-7,7,ultimoPDTAcquistato_altro <= 0.500 AND PDTCategTotalSpending_Digitale <= 0.500 AND PDTCategTotalSpending_Protezione <= 0.500 AND LTV > 2.500
-17,Generic,ultimoPDTAcquistato_altro > 0.500 AND Engagement <= 0.916
-6,Generic,ultimoPDTAcquistato_altro <= 0.500 AND PDTCategTotalSpending_Digitale <= 0.500 AND PDTCategTotalSpending_Protezione <= 0.500 AND LTV <= 2.500 AND Engagement > 0.512
-14,Generic,ultimoPDTAcquistato_altro <= 0.500 AND PDTCategTotalSpending_Digitale <= 0.500 AND PDTCategTotalSpending_Protezione > 0.500 AND Eta > 58.500 AND Engagement > 0.563
-18,Generic,ultimoPDTAcquistato_altro > 0.500 AND Engagement > 0.916
-5,Generic,ultimoPDTAcquistato_altro <= 0.500 AND PDTCategTotalSpending_Digitale <= 0.500 AND PDTCategTotalSpending_Protezione <= 0.500 AND LTV <= 2.500 AND Engagement <= 0.512
-13,Generic,ultimoPDTAcquistato_altro <= 0.500 AND PDTCategTotalSpending_Digitale <= 0.500 AND PDTCategTotalSpending_Protezione > 0.500 AND Eta > 58.500 AND Engagement <= 0.563
+11,11,ultimoPDTAcquistato_altro <= 0.500 AND PDTCategTotalSpending_Digitale > 0.500
+4,4,ultimoPDTAcquistato_altro <= 0.500 AND PDTCategTotalSpending_Digitale <= 0.500 AND Eta <= 58.500 AND Tenure <= 10.500
+5,5,ultimoPDTAcquistato_altro <= 0.500 AND PDTCategTotalSpending_Digitale <= 0.500 AND Eta <= 58.500 AND Tenure > 10.500
+15,Generic,ultimoPDTAcquistato_altro > 0.500 AND GrandCentr > 0.500 AND Eta <= 49.500
+7,Generic,ultimoPDTAcquistato_altro <= 0.500 AND PDTCategTotalSpending_Digitale <= 0.500 AND Eta > 58.500 AND PDTCategTotalSpending_Protezione <= 0.500
+10,Generic,ultimoPDTAcquistato_altro <= 0.500 AND PDTCategTotalSpending_Digitale <= 0.500 AND Eta > 58.500 AND PDTCategTotalSpending_Protezione > 0.500 AND RFM_Score > 2.500
+16,Generic,ultimoPDTAcquistato_altro > 0.500 AND GrandCentr > 0.500 AND Eta > 49.500
+13,Generic,ultimoPDTAcquistato_altro > 0.500 AND GrandCentr <= 0.500
+9,Generic,ultimoPDTAcquistato_altro <= 0.500 AND PDTCategTotalSpending_Digitale <= 0.500 AND Eta > 58.500 AND PDTCategTotalSpending_Protezione > 0.500 AND RFM_Score <= 2.500
