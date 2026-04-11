@@ -1,0 +1,142 @@
+[
+  {
+    "feature": "RFM_Score",
+    "mean_impact": 0.48762071956114883
+  },
+  {
+    "feature": "GreenSurveyScore",
+    "mean_impact": 0.46754967618825843
+  },
+  {
+    "feature": "Tenure",
+    "mean_impact": 0.3660152325126074
+  },
+  {
+    "feature": "LifeCycle_NeoLavoratore",
+    "mean_impact": 0.31645600126010187
+  },
+  {
+    "feature": "Eta",
+    "mean_impact": 0.276441283813416
+  },
+  {
+    "feature": "Engagement",
+    "mean_impact": 0.2739501282073678
+  },
+  {
+    "feature": "margins12months",
+    "mean_impact": 0.25779106712136446
+  },
+  {
+    "feature": "LTV",
+    "mean_impact": 0.1793280262692796
+  },
+  {
+    "feature": "LivelloDigitalizzazione",
+    "mean_impact": 0.142632705631093
+  },
+  {
+    "feature": "LifeCycle_Lavoratore",
+    "mean_impact": 0.11392739975814743
+  },
+  {
+    "feature": "Professione_Operaio",
+    "mean_impact": 0.10508008982671968
+  },
+  {
+    "feature": "Capacita_d_ spsa",
+    "mean_impact": 0.10325643342406945
+  },
+  {
+    "feature": "Numero di Prodtti Aquistati negli ultimi 12 mesi",
+    "mean_impact": 0.09502235432343083
+  },
+  {
+    "feature": "ultimoPDTAcquistato_DisposotivoMonitoraggio",
+    "mean_impact": 0.08020029360777967
+  },
+  {
+    "feature": "PDTCategTotalSpending_Protezione",
+    "mean_impact": 0.07764219217307924
+  },
+  {
+    "feature": "ultimoPDTAcquistato_altro",
+    "mean_impact": 0.06352217408711229
+  },
+  {
+    "feature": "ultimoPDTAcquistato_Caschetto",
+    "mean_impact": 0.05847602640705201
+  },
+  {
+    "feature": "PDTCategTotalSpending_altro",
+    "mean_impact": 0.04346259110168405
+  },
+  {
+    "feature": "ultimoPDTAcquistato_guantini ",
+    "mean_impact": 0.037319180344211306
+  },
+  {
+    "feature": "GrandCentr",
+    "mean_impact": 0.030327664647687474
+  },
+  {
+    "feature": "ultimoPDTAcquistato_Bici Elettrica",
+    "mean_impact": 0.022390343589626667
+  },
+  {
+    "feature": "Professione_Professionista",
+    "mean_impact": 0.021682250021540204
+  },
+  {
+    "feature": "Professione_Impiegato",
+    "mean_impact": 0.01774907192946448
+  },
+  {
+    "feature": "PDTCategTotalSpending_Mobility",
+    "mean_impact": 0.014905769318067412
+  },
+  {
+    "feature": "LifeCycle_Lavoratore SINK",
+    "mean_impact": 0.013395649161076493
+  },
+  {
+    "feature": "LifeCycle_Genitore",
+    "mean_impact": 0.007826012070349444
+  },
+  {
+    "feature": "PDTCategTotalSpending_Digitale",
+    "mean_impact": 0.0025443962560689074
+  },
+  {
+    "feature": "Professione_Tassista",
+    "mean_impact": 0.0005010173883345081
+  },
+  {
+    "feature": "Professione_Pensionato",
+    "mean_impact": 0.0003132047307037365
+  },
+  {
+    "feature": "LifeCycle_Prossimo alla Pensione",
+    "mean_impact": 7.45766014064776e-05
+  },
+  {
+    "feature": "Professione_Imprenditore",
+    "mean_impact": 0.0
+  },
+  {
+    "feature": "LifeCycle_NeoGenitore",
+    "mean_impact": 0.0
+  },
+  {
+    "feature": "LifeCycle_Pensionato",
+    "mean_impact": 0.0
+  },
+  {
+    "feature": "ultimoPDTAcquistato_nan",
+    "mean_impact": 0.0
+  },
+  {
+    "feature": "PDTCategTotalSpending_nan",
+    "mean_impact": 0.0
+  }
+]
