@@ -367,6 +367,14 @@ def ds_profile_generator(
         "HP", "LP", "TRICT",
         "cluster", "cluster_propensity",
         "final_cluster", "cluster_p_value", "cluster_z_stat"
+        "Profile_ID",
+        "cluster_propensity", "leaf_propensity",
+        "profile_p_value", "profile_z_stat", "profile_count",
+        "cluster_p_value", "cluster_z_stat",
+        "profile_volume", "profile_pct"
+        "cluster", "leaf_id", "final_cluster",
+        "cluster_p_value", "cluster_z_stat",
+        "profile_p_value", "profile_z_stat", "profile_count","leaf_id","TRICT","profile_propensity","leaf_propensity","cluster_propensity"
     }
     X_dt_df = df.drop(columns=list(_drop_dt), errors="ignore")
 
@@ -520,6 +528,13 @@ def ds_profile_generator(
         "cluster", "leaf_id", "final_cluster",
         "cluster_p_value", "cluster_z_stat",
         "profile_p_value", "profile_z_stat", "profile_count"
+        "cluster_propensity", "leaf_propensity",
+        "profile_p_value", "profile_z_stat", "profile_count",
+        "cluster_p_value", "cluster_z_stat",
+        "profile_volume", "profile_pct"
+        "cluster", "leaf_id", "final_cluster",
+        "cluster_p_value", "cluster_z_stat",
+        "profile_p_value", "profile_z_stat", "profile_count","leaf_id","TRICT","profile_propensity","leaf_propensity","cluster_propensity"
     }
     agg_num_cols = [
         c for c in df.select_dtypes(include="number").columns
@@ -569,6 +584,13 @@ def ds_profile_generator(
         "profile_p_value", "profile_z_stat", "profile_count",
         "cluster_p_value", "cluster_z_stat",
         "profile_volume", "profile_pct"
+        "cluster_propensity", "leaf_propensity",
+        "profile_p_value", "profile_z_stat", "profile_count",
+        "cluster_p_value", "cluster_z_stat",
+        "profile_volume", "profile_pct"
+        "cluster", "leaf_id", "final_cluster",
+        "cluster_p_value", "cluster_z_stat",
+        "profile_p_value", "profile_z_stat", "profile_count","leaf_id","TRICT","profile_propensity","leaf_propensity","cluster_propensity"
     }
     X_lr_df = df.drop(columns=list(_drop_lr), errors="ignore")
 
